@@ -53,7 +53,8 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
     public void setKeyBoard(int size,int width, int height, int orientation) {
         LayoutParams p;
         int number = 0;
-        int numberOfButtonsPerRow = (size % 2 == 0) ? size/2 :(size+1)/2;
+//        int numberOfButtonsPerRow = (size % 2 == 0) ? size/2 :(size+1)/2;
+        int numberOfButtonsPerRow = 9;
         int numberOfButtons = numberOfButtonsPerRow * 2;
 
         normalTextSize = (int) getResources().getDimension(R.dimen.text_size) / getResources().getDisplayMetrics().scaledDensity;
@@ -65,7 +66,7 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
             if(orientation == LinearLayout.HORIZONTAL) {
                 p = new LayoutParams(LayoutParams.MATCH_PARENT, 0, 1);
             } else {
-                p = new LayoutParams(0, LayoutParams.MATCH_PARENT, 1);
+                p = new LayoutParams(0, LayoutParams.MATCH_PARENT, 0.5f);
             }
             //if (i == 0) p.bottomMargin=10; else p.topMargin=10;
             p.setMargins(0, 5, 0, 5);
@@ -108,7 +109,7 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
 
           //      buttons[number].setLayoutParams(p);
                 buttons[buttonIndex].setType(SudokuButtonType.Value);
-                buttons[buttonIndex].setTextColor(getResources().getColor(R.color.white));
+                buttons[buttonIndex].setTextColor(getResources().getColor(R.color.md_blue_700));
                 buttons[buttonIndex].setBackgroundResource(R.drawable.mnenomic_numpad_button);
                 buttons[buttonIndex].setPadding(0, 0, 0, 0);
                 buttons[buttonIndex].setGravity(Gravity.CENTER);

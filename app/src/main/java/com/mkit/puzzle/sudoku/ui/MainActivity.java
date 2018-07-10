@@ -239,12 +239,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 i.putExtra("gameType", gameType.name());
                 i.putExtra("gameDifficulty", gameDifficulty.name());
                 if(!newLevelManager.isLevelLoadable(gameType, gameDifficulty)) {
-                    // save current setting for later
-                    newLevelManager.checkAndRestock();
-                    Toast t = Toast.makeText(getApplicationContext(), R.string.generating, Toast.LENGTH_SHORT);
-                    t.show();
-                    newLevelManager.loadFirstStartLevels();
-                }
+                // save current setting for later
+                newLevelManager.checkAndRestock();
+                Toast t = Toast.makeText(getApplicationContext(), R.string.generating, Toast.LENGTH_SHORT);
+                t.show();
+                newLevelManager.loadFirstStartLevels();
+            }
                 break;
             case R.id.playChessButton:
                 gotoApp(chess_package);
