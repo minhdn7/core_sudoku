@@ -67,45 +67,47 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
                         gameController.UnDo();
                         break;
                     case Hint:
+
                         if(gameController.isValidCellSelected()) {
-                            if(AdmobPopupAd.isInterstitialAdLoaded())
-                            {
-                                AdmobPopupAd.showInterstitial();
-                                AdmobPopupAd.setInterstitialAdListener(new AdmobPopupAd.InterstitialAdListener() {
-                                    @Override
-                                    public void onLoaded() {
-
-                                    }
-
-                                    @Override
-                                    public void onFailed() {
-
-                                    }
-
-                                    @Override
-                                    public void onClosed() {
-                                        AdmobPopupAd.setInterstitialAdListener(null);
-                                        if(gameController.getUsedHints() == 0) {
-                                            // are you sure you want to use a hint?
-                                            HintConfirmationDialog hintDialog = new HintConfirmationDialog();
-                                            hintDialog.show(fragmentManager, "HintDialogFragment");
-
-                                        } else {
-                                            gameController.hint();
-                                        }
-                                    }
-                                });
-                            }else
-                            {
-                                if(gameController.getUsedHints() == 0) {
-                                    // are you sure you want to use a hint?
-                                    HintConfirmationDialog hintDialog = new HintConfirmationDialog();
-                                    hintDialog.show(fragmentManager, "HintDialogFragment");
-
-                                } else {
-                                    gameController.hint();
-                                }
-                            }
+                            gameController.hint();
+//                            if(AdmobPopupAd.isInterstitialAdLoaded())
+//                            {
+//                                AdmobPopupAd.showInterstitial();
+//                                AdmobPopupAd.setInterstitialAdListener(new AdmobPopupAd.InterstitialAdListener() {
+//                                    @Override
+//                                    public void onLoaded() {
+//
+//                                    }
+//
+//                                    @Override
+//                                    public void onFailed() {
+//
+//                                    }
+//
+//                                    @Override
+//                                    public void onClosed() {
+//                                        AdmobPopupAd.setInterstitialAdListener(null);
+//                                        if(gameController.getUsedHints() == 0) {
+//                                            // are you sure you want to use a hint?
+//                                            HintConfirmationDialog hintDialog = new HintConfirmationDialog();
+//                                            hintDialog.show(fragmentManager, "HintDialogFragment");
+//
+//                                        } else {
+//                                            gameController.hint();
+//                                        }
+//                                    }
+//                                });
+//                            }else
+//                            {
+//                                if(gameController.getUsedHints() == 0) {
+//                                    // are you sure you want to use a hint?
+//                                    HintConfirmationDialog hintDialog = new HintConfirmationDialog();
+//                                    hintDialog.show(fragmentManager, "HintDialogFragment");
+//
+//                                } else {
+//                                    gameController.hint();
+//                                }
+//                            }
                         } else {
                             // Display a Toast that explains how to use the Hint function.
                             Toast t = Toast.makeText(getContext(), R.string.hint_usage, Toast.LENGTH_SHORT);
@@ -164,13 +166,13 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
                 fixedButtons[i].setEnabled(false);
             }*/
             fixedButtons[i].setLayoutParams(p);
-            fixedButtons[i].setType(t);
+//            fixedButtons[i].setType(t);
             fixedButtons[i].setImageDrawable(getResources().getDrawable(t.getResID()));
             // fixedButtons[i].setText(SudokuButtonType.getName(t));
-            fixedButtons[i].setScaleType(ImageView.ScaleType.CENTER);
-            fixedButtons[i].setAdjustViewBounds(true);
+//            fixedButtons[i].setScaleType(ImageView.ScaleType.CENTER);
+//            fixedButtons[i].setAdjustViewBounds(true);
             fixedButtons[i].setOnClickListener(listener);
-            fixedButtons[i].setBackgroundResource(R.drawable.numpad_highlighted_four);
+//            fixedButtons[i].setBackgroundResource(R.drawable.numpad_highlighted_four);
             addView(fixedButtons[i]);
             i++;
         }
@@ -186,8 +188,8 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
                             R.drawable.numpad_highlighted_four : R.drawable.inactive_button);
                     break;
                 case Do:
-                    fixedButtons[i].setBackgroundResource(gameController.isRedoAvailable() ?
-                            R.drawable.numpad_highlighted_four : R.drawable.inactive_button);
+//                    fixedButtons[i].setBackgroundResource(gameController.isRedoAvailable() ?
+//                            R.drawable.numpad_highlighted_four : R.drawable.inactive_button);
                     break;
                 case NoteToggle:
                     bitMap = BitmapFactory.decodeResource(getResources(), fixedButtons[i].getType().getResID());
