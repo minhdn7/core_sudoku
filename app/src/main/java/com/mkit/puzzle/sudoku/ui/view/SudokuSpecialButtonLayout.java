@@ -169,10 +169,11 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
 //            fixedButtons[i].setType(t);
             fixedButtons[i].setImageDrawable(getResources().getDrawable(t.getResID()));
             // fixedButtons[i].setText(SudokuButtonType.getName(t));
-//            fixedButtons[i].setScaleType(ImageView.ScaleType.CENTER);
+            fixedButtons[i].setScaleType(ImageView.ScaleType.CENTER);
 //            fixedButtons[i].setAdjustViewBounds(true);
             fixedButtons[i].setOnClickListener(listener);
 //            fixedButtons[i].setBackgroundResource(R.drawable.numpad_highlighted_four);
+            fixedButtons[i].setBackgroundResource(R.color.md_grey_50);
             addView(fixedButtons[i]);
             i++;
         }

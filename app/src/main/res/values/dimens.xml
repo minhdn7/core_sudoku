@@ -7,7 +7,7 @@
     <dimen name="text_margin">16dp</dimen>
 
 
-    <dimen name="text_size">20sp</dimen>
+    <dimen name="text_size">36sp</dimen>
     <dimen name="main_text_difficulty">30sp</dimen>
     <dimen name="main_button_padding">25dp</dimen>
 

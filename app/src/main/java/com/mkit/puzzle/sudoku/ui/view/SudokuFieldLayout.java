@@ -99,7 +99,7 @@ public class SudokuFieldLayout extends RelativeLayout implements IHighlightChang
 
         if(gameController == null) return;
 
-        p.setColor(Color.BLACK);
+        p.setColor(getResources().getColor(R.color.md_grey_800));
         p.setStrokeWidth(5);
 
         int horizontalSections = gameController.getSize() / sectionWidth;

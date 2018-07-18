@@ -23,7 +23,7 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
     SudokuButton [] buttons;
     GameController gameController;
     Symbol symbolsToUse = Symbol.Default;
-    float normalTextSize = 20; // in sp
+    float normalTextSize = 48; // in sp
     LinearLayout [] layouts = new LinearLayout[2];
 
     OnClickListener listener = new OnClickListener() {
@@ -57,6 +57,7 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
         int numberOfButtonsPerRow = 9;
         int numberOfButtons = numberOfButtonsPerRow * 2;
 
+//        normalTextSize = (int) getResources().getDimension(R.dimen.text_size) / getResources().getDisplayMetrics().scaledDensity;
         normalTextSize = (int) getResources().getDimension(R.dimen.text_size) / getResources().getDisplayMetrics().scaledDensity;
 
         buttons = new SudokuButton[numberOfButtons];
@@ -66,7 +67,7 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
             if(orientation == LinearLayout.HORIZONTAL) {
                 p = new LayoutParams(LayoutParams.MATCH_PARENT, 0, 1);
             } else {
-                p = new LayoutParams(0, LayoutParams.MATCH_PARENT, 0.5f);
+                p = new LayoutParams(0, LayoutParams.MATCH_PARENT, 1);
             }
             //if (i == 0) p.bottomMargin=10; else p.topMargin=10;
             p.setMargins(0, 5, 0, 5);
@@ -90,7 +91,7 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
                 } else {
                     p = new LayoutParams(LayoutParams.MATCH_PARENT, 0, 1);
                 }
-                p.setMargins(5,5,5,5);
+//                p.setMargins(2,2,2,2);
                 buttons[buttonIndex].setLayoutParams(p);
                 /* removed GridLayout because of bad scaling will use now a Linearlayout
                 Spec rowSpec = spec(k,1);
@@ -109,8 +110,9 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
 
           //      buttons[number].setLayoutParams(p);
                 buttons[buttonIndex].setType(SudokuButtonType.Value);
-                buttons[buttonIndex].setTextColor(getResources().getColor(R.color.md_blue_700));
-                buttons[buttonIndex].setBackgroundResource(R.drawable.mnenomic_numpad_button);
+                buttons[buttonIndex].setTextColor(getResources().getColor(R.color.md_blue_800));
+//                buttons[buttonIndex].setBackgroundResource(R.drawable.mnenomic_numpad_button);
+                buttons[buttonIndex].setBackgroundResource(R.color.md_grey_50);
                 buttons[buttonIndex].setPadding(0, 0, 0, 0);
                 buttons[buttonIndex].setGravity(Gravity.CENTER);
                 buttons[buttonIndex].setText(Symbol.getSymbol(symbolsToUse, buttonIndex));
@@ -167,19 +169,19 @@ public class SudokuKeyboardLayout extends LinearLayout implements IHighlightChan
 
     @Override
     public void onHighlightChanged() {
-        for(SudokuButton i_btn : buttons) {
-            i_btn.setBackgroundResource(R.drawable.mnenomic_numpad_button);
-
-            // Highlight Yellow if we are done with that number
-            if(gameController.getValueCount(i_btn.getValue()) == gameController.getSize()) {
-                i_btn.setBackgroundResource(R.drawable.numpad_highlighted_three);
-            }
-
-            if(gameController.getSelectedValue() == i_btn.getValue()) {
-                // highlight button to indicate that the value is selected
-                i_btn.setBackgroundResource(R.drawable.numpad_highlighted);
-            }
-        }
+//        for(SudokuButton i_btn : buttons) {
+//            i_btn.setBackgroundResource(R.drawable.mnenomic_numpad_button);
+//
+//            // Highlight Yellow if we are done with that number
+//            if(gameController.getValueCount(i_btn.getValue()) == gameController.getSize()) {
+//                i_btn.setBackgroundResource(R.drawable.numpad_highlighted_three);
+//            }
+//
+//            if(gameController.getSelectedValue() == i_btn.getValue()) {
+//                // highlight button to indicate that the value is selected
+//                i_btn.setBackgroundResource(R.drawable.numpad_highlighted);
+//            }
+//        }
     }
 
 
