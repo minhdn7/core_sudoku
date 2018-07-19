@@ -29,9 +29,41 @@
         <com.mkit.puzzle.sudoku.ui.view.SudokuSpecialButtonLayout
             android:id="@+id/sudokuSpecialLayout"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"/>
-
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="12"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="@string/str_di_lai"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="@string/str_xoa"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="@string/str_but_chi"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="@string/str_goi_y"/>
+        </LinearLayout>
         <com.mkit.puzzle.sudoku.ui.view.SudokuKeyboardLayout
             android:layout_width="fill_parent"
             android:layout_height="0px"

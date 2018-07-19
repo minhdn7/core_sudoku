@@ -119,5 +119,9 @@
     <string name="pref_highlightInputError" translatable="false">Highlight input mistakes</string>
     <string name="pref_keep_screen_on">Keep Screen On</string>
     <string name="pref_keep_screen_on_summary">Don\'t turn the screen off while playing</string>
+    <string name="str_di_lai">Đi lại</string>
+    <string name="str_xoa">Xóa</string>
+    <string name="str_but_chi">Bút chì</string>
+    <string name="str_goi_y">Gợi ý</string>
 
 </resources>
