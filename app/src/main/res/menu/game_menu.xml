@@ -1,0 +1,55 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="tu_darmstadt.sudoku.ui.StatsActivity">
+    <item android:id="@+id/action_setting"
+        android:title="@string/str_setting"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_statistic"
+        android:title="@string/str_statitic"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_guild"
+        android:title="@string/str_guild"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_help"
+        android:title="@string/str_help"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_policy"
+        android:title="@string/str_policy"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_privacy"
+        android:title="@string/str_privacy"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_paint"
+        android:icon="@mipmap/ic_paint"
+        android:title="@string/menu_settings"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_trophy"
+        android:icon="@mipmap/ic_trophy"
+        android:title="@string/menu_settings"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_pause"
+        android:icon="@mipmap/ic_pause"
+        android:title="@string/menu_settings"
+        app:showAsAction="always"/>
+</menu>

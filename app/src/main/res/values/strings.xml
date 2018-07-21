@@ -123,5 +123,16 @@
     <string name="str_xoa">Xóa</string>
     <string name="str_but_chi">Bút chì</string>
     <string name="str_goi_y">Gợi ý</string>
+    <string name="str_setting">Cài đặt</string>
+    <string name="str_statitic">Thống kê</string>
+    <string name="str_guild">Cách chơi</string>
+    <string name="str_help">Trợ giúp</string>
+    <string name="str_policy">Điều khoản dịch vụ</string>
+    <string name="str_privacy">Chính sách riêng tư</string>
+    <string name="str_new_game">Trò chơi mới</string>
+    <string name="str_xoa_tien_trinh">Tiến trình trò chơi hiện tại sẽ bị xóa</string>
+    <string name="str_thu_thach">Thử thách hàng ngày</string>
+    <string name="str_easy">Dễ</string>
+    <string name="str_normal">Vừa</string>
 
 </resources>

@@ -39,15 +39,17 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:gravity="center_vertical">
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gametype_unspecified"
+                    android:text="@string/str_new_game"
                     android:id="@+id/gameModeText"
-                    android:layout_weight="7"/>
+                    android:textColor="@color/md_grey_800"
+                    android:textAllCaps="true" />
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_weight="5"
                     android:clipChildren="false"
+                    android:visibility="gone"
                     android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="wrap_content"
@@ -68,13 +70,13 @@
                         style="?android:attr/ratingBarStyleSmall"/>
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="00:00"
-                    android:layout_weight="2"
-                    android:id="@+id/timerView"
-                    android:gravity="end"/>
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="00:00"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:id="@+id/timerView"-->
+                    <!--android:gravity="end"/>-->
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
 

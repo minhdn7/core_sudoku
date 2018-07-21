@@ -166,7 +166,7 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
                 fixedButtons[i].setEnabled(false);
             }*/
             fixedButtons[i].setLayoutParams(p);
-//            fixedButtons[i].setType(t);
+            fixedButtons[i].setType(t);
             fixedButtons[i].setImageDrawable(getResources().getDrawable(t.getResID()));
             // fixedButtons[i].setText(SudokuButtonType.getName(t));
             fixedButtons[i].setScaleType(ImageView.ScaleType.CENTER);
@@ -185,8 +185,8 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
         for(int i = 0; i < fixedButtons.length; i++) {
             switch(fixedButtons[i].getType()) {
                 case Undo:
-                    fixedButtons[i].setBackgroundResource(gameController.isUndoAvailable() ?
-                            R.drawable.numpad_highlighted_four : R.drawable.inactive_button);
+//                    fixedButtons[i].setBackgroundResource(gameController.isUndoAvailable() ?
+//                            R.drawable.numpad_highlighted_four : R.drawable.inactive_button);
                     break;
                 case Do:
 //                    fixedButtons[i].setBackgroundResource(gameController.isRedoAvailable() ?
@@ -201,7 +201,7 @@ public class SudokuSpecialButtonLayout extends LinearLayout implements IHighligh
                     canvas.drawBitmap(bitMap, 0, 0, null);
 
                     fixedButtons[i].setImageBitmap(bitResult);
-                    fixedButtons[i].setBackgroundResource(gameController.getNoteStatus() ? R.drawable.numpad_highlighted_three : R.drawable.numpad_highlighted_four);
+//                    fixedButtons[i].setBackgroundResource(gameController.getNoteStatus() ? R.drawable.numpad_highlighted_three : R.drawable.numpad_highlighted_four);
 
                     keyboard.updateNotesEnabled();
 

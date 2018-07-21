@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,8 +23,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -69,7 +73,7 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
     private boolean gameSolved = false;
     SaveLoadStatistics statistics = new SaveLoadStatistics(this);
     WinDialog dialog = null;
-
+    private BottomSheetDialog bottomSheetDialog;
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -91,6 +95,25 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        initControls(savedInstanceState);
+        addBottomMenu();
+    }
+
+    private void addBottomMenu() {
+        bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        bottomSheetDialog.setContentView(R.layout.bottom_menu);
+        viewName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!bottomSheetDialog.isShowing()){
+                    bottomSheetDialog.show();
+                }
+            }
+        });
+    }
+
+    private void initControls(Bundle savedInstanceState) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
         if(sharedPref.getBoolean("pref_keep_screen_on", true)) {
@@ -187,7 +210,6 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
 
         //set GameName
         viewName = (TextView) findViewById(R.id.gameModeText);
-        viewName.setText(getString(gameController.getGameType().getStringResID()));
 
         //set Rating bar
         List<GameDifficulty> difficutyList = GameDifficulty.getValidDifficultyList();
@@ -538,5 +560,14 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onDestroy() {
         if(adView != null)adView.destroy();
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.game_menu, menu);
+
+        // return true so that the menu pop up is opened
+        return true;
     }
 }
