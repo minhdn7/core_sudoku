@@ -134,5 +134,9 @@
     <string name="str_thu_thach">Thử thách hàng ngày</string>
     <string name="str_easy">Dễ</string>
     <string name="str_normal">Vừa</string>
+    <string name="str_lv_expert">LV_EXPERT</string>
+    <string name="str_lv_hard">LV_HARD</string>
+    <string name="str_lv_normal">LV_NORMAL</string>
+    <string name="str_lv_easy">LV_EASY</string>
 
 </resources>

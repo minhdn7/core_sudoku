@@ -35,9 +35,6 @@ public class SplashActivity extends AppCompatActivity {
 //        tinyDB.putString("lastChosenDifficulty", getString(R.string.difficulty_easy));
         configStartLevel();
 
-//        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-//        SplashActivity.this.startActivity(mainIntent);
-//        SplashActivity.this.finish();
     }
 
     private void configStartLevel() {
@@ -46,14 +43,15 @@ public class SplashActivity extends AppCompatActivity {
         newLevelManager.checkAndRestock();
         final GameType gameType = GameType.getValidGameTypes().get(1);
         final GameDifficulty gameDifficulty = GameDifficulty.getValidDifficultyList().get(1);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("lastChosenGameType", gameType.name());
-        editor.putString("lastChosenDifficulty", gameDifficulty.name());
-        editor.apply();
+//        SharedPreferences.Editor editor = settings.edit();
+//        editor.putString("lastChosenGameType", gameType.name());
+//        editor.putString("lastChosenDifficulty", gameDifficulty.name());
+//        editor.apply();
 
         Intent mainIntent = new Intent(SplashActivity.this, GameActivity.class);
         mainIntent.putExtra("gameType", gameType.name());
         mainIntent.putExtra("gameDifficulty", gameDifficulty.name());
+        mainIntent.putExtra("GAME_LEVEL", getString(R.string.str_lv_easy));
 
         if(!newLevelManager.isLevelLoadable(gameType, gameDifficulty)) {
             // save current setting for later

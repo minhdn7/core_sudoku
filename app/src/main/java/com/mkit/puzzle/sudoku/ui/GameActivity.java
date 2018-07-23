@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +62,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.RunnableFuture;
 
-public class GameActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, IGameSolvedListener ,ITimerListener, IHintDialogFragmentListener, IResetDialogFragmentListener {
+public class GameActivity extends BaseActivity implements IGameSolvedListener ,ITimerListener, IHintDialogFragmentListener, IResetDialogFragmentListener {
 
     GameController gameController;
     SudokuFieldLayout layout;
@@ -74,6 +75,7 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
     SaveLoadStatistics statistics = new SaveLoadStatistics(this);
     WinDialog dialog = null;
     private BottomSheetDialog bottomSheetDialog;
+    private String gamelevel = "";
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -111,6 +113,80 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
                 }
             }
         });
+
+        LinearLayout viewDailyQuest = (LinearLayout) bottomSheetDialog.findViewById(R.id.viewDailyQuest);
+        LinearLayout viewEasyQuest = (LinearLayout) bottomSheetDialog.findViewById(R.id.viewEasyQuest);
+        LinearLayout viewNormalQuest = (LinearLayout) bottomSheetDialog.findViewById(R.id.viewNormalQuest);
+        LinearLayout viewHardQuest = (LinearLayout) bottomSheetDialog.findViewById(R.id.viewHardQuest);
+        LinearLayout viewExpertQuest = (LinearLayout) bottomSheetDialog.findViewById(R.id.viewExpertQuest);
+        LinearLayout viewReset = (LinearLayout) bottomSheetDialog.findViewById(R.id.viewReset);
+
+        viewDailyQuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        viewEasyQuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(GameActivity.this, GameActivity.class);
+                mainIntent.putExtra("gameType", "Default_9x9");
+                mainIntent.putExtra("gameDifficulty", getString(R.string.difficulty_moderate));
+                mainIntent.putExtra("GAME_LEVEL", getString(R.string.str_lv_easy));
+                finish();
+                startActivity(mainIntent);
+            }
+        });
+
+        viewNormalQuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(GameActivity.this, GameActivity.class);
+                mainIntent.putExtra("gameType", "Default_9x9");
+                mainIntent.putExtra("gameDifficulty", getString(R.string.difficulty_moderate));
+                mainIntent.putExtra("GAME_LEVEL", getString(R.string.str_lv_normal));
+                finish();
+                startActivity(mainIntent);
+            }
+        });
+
+        viewHardQuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(GameActivity.this, GameActivity.class);
+                mainIntent.putExtra("gameType", "Default_9x9");
+                mainIntent.putExtra("gameDifficulty", getString(R.string.difficulty_hard));
+                mainIntent.putExtra("GAME_LEVEL", getString(R.string.str_lv_hard));
+                finish();
+                startActivity(mainIntent);
+            }
+        });
+
+        viewExpertQuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(GameActivity.this, GameActivity.class);
+                mainIntent.putExtra("gameType", "Default_9x9");
+                mainIntent.putExtra("gameDifficulty", getString(R.string.difficulty_challenge));
+                mainIntent.putExtra("GAME_LEVEL", getString(R.string.str_lv_expert));
+                finish();
+                startActivity(mainIntent);
+            }
+        });
+
+        viewReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(GameActivity.this, GameActivity.class);
+                mainIntent.putExtra("gameType", "Default_9x9");
+                mainIntent.putExtra("gameDifficulty", getIntent().getExtras().getString("gameDifficulty", GameDifficulty.Moderate.name()));
+                mainIntent.putExtra("GAME_LEVEL", getIntent().getExtras().getString("GAME_LEVEL"));
+                finish();
+                startActivity(mainIntent);
+            }
+        });
     }
 
     private void initControls(Bundle savedInstanceState) {
@@ -131,6 +207,7 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
             if (extras != null) {
                 gameType = GameType.valueOf(extras.getString("gameType", GameType.Default_9x9.name()));
                 gameDifficulty = GameDifficulty.valueOf(extras.getString("gameDifficulty", GameDifficulty.Moderate.name()));
+                gamelevel = extras.getString("gameDifficulty", GameDifficulty.Moderate.name());
                 loadLevel = extras.getBoolean("loadLevel", false);
                 if (loadLevel) {
                     loadLevelID = extras.getInt("loadLevelID");
@@ -172,9 +249,6 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
         setSupportActionBar(toolbar);
         //toolbar.addView();
 
-        if(gameSolved) {
-            disableReset();
-        }
 
         //Create new GameField
         layout = (SudokuFieldLayout)findViewById(R.id.sudokuLayout);
@@ -207,7 +281,22 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
         //set TimerView
         timerView = (TextView)findViewById(R.id.timerView);
 
-
+        // set game level view
+        TextView tvLevel = (TextView)findViewById(R.id.tvLevel);
+        switch ( getIntent().getExtras().getString("GAME_LEVEL")){
+            case "LV_EASY":
+                tvLevel.setText("Dễ");
+                break;
+            case "LV_NORMAL":
+                tvLevel.setText("Vừa");
+                break;
+            case "LV_HARD":
+                tvLevel.setText("Khó");
+                break;
+            case "LV_EXPERT":
+                tvLevel.setText("Chuyên gia");
+                break;
+        }
         //set GameName
         viewName = (TextView) findViewById(R.id.gameModeText);
 
@@ -221,14 +310,7 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
         ((TextView)findViewById(R.id.difficultyText)).setText(getString(gameController.getDifficulty().getStringResID()));
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         if(gameSolved) {
             layout.setEnabled(false);
@@ -307,35 +389,7 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            if(AdmobPopupAd.isInterstitialAdLoaded())
-            {
-                AdmobPopupAd.showInterstitial();
-                AdmobPopupAd.setInterstitialAdListener(new AdmobPopupAd.InterstitialAdListener() {
-                    @Override
-                    public void onLoaded() {
 
-                    }
-
-                    @Override
-                    public void onFailed() {
-
-                    }
-
-                    @Override
-                    public void onClosed() {
-                        finish();
-                        AdmobPopupAd.setInterstitialAdListener(null);
-                    }
-                });
-            }else
-            {
-                super.onBackPressed();
-            }
-        }
     }
 
     /*@Override
@@ -345,69 +399,6 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }*/
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        Intent intent = null;
-
-        switch(id) {
-            case R.id.menu_reset:
-                ResetConfirmationDialog resetDialog = new ResetConfirmationDialog();
-                resetDialog.show(getFragmentManager(), "ResetDialogFragment");
-                break;
-
-            case R.id.nav_newgame:
-                //create new game
-                intent = new Intent(this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                finish();
-                break;
-
-            case R.id.menu_settings:
-                //open settings
-                intent = new Intent(this,SettingsActivity.class);
-                intent.putExtra( PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.GamePreferenceFragment.class.getName() );
-                intent.putExtra( PreferenceActivity.EXTRA_NO_HEADERS, true );
-                break;
-
-            case R.id.nav_highscore:
-                // see highscore list
-                intent = new Intent(this, StatsActivity.class);
-                break;
-
-            case R.id.menu_help:
-                //open about page
-                intent = new Intent(this,HelpActivity.class);
-                break;
-            default:
-        }
-
-        if(intent != null) {
-
-            final Intent i = intent;
-            // fade out the active activity
-            View mainContent = findViewById(R.id.main_content);
-            if (mainContent != null) {
-                mainContent.animate().alpha(0).setDuration(MAIN_CONTENT_FADEOUT_DURATION);
-            }
-
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(i);
-                    overridePendingTransition(0, 0);
-                }
-            }, NAVDRAWER_LAUNCH_DELAY);
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
 
     @Override
@@ -416,7 +407,6 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
 
         gameController.pauseTimer();
         gameController.deleteGame(this);
-        disableReset();
 
         //Show time hints new plus old best time
 
@@ -475,11 +465,6 @@ public class GameActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    private void disableReset(){
-        NavigationView navView = (NavigationView)findViewById(R.id.nav_view);
-        Menu navMenu = navView.getMenu();
-        navMenu.findItem(R.id.menu_reset).setEnabled(false);
-    }
     @Override
     public void onTick(int time) {
 
