@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.mkit.puzzle.sudoku.controller.helper.GameInfoContainer;
 import com.mkit.puzzle.sudoku.game.CellConflict;
@@ -19,6 +21,7 @@ import com.mkit.puzzle.sudoku.game.listener.IHighlightChangedListener;
 import com.mkit.puzzle.sudoku.game.listener.IHintListener;
 import com.mkit.puzzle.sudoku.game.listener.IModelChangedListener;
 import com.mkit.puzzle.sudoku.game.listener.ITimerListener;
+import com.mkit.puzzle.sudoku.ui.GameActivity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -72,8 +75,29 @@ public class GameController implements IModelChangedListener, Parcelable {
     private Timer timer = new Timer();
     private TimerTask timerTask;
 
+    public GameActivity getGameActivity() {
+        return gameActivity;
+    }
+
+    public void setGameActivity(GameActivity gameActivity) {
+        this.gameActivity = gameActivity;
+    }
+
+    public TextView getTvNumberError() {
+        return tvNumberError;
+    }
+
+    public void setTvNumberError(TextView tvNumberError) {
+        this.tvNumberError = tvNumberError;
+    }
+
+    // GameActivty
+    private GameActivity gameActivity;
+    public TextView tvNumberError;
+
     private boolean noteStatus = false;
 
+    public Integer numberError = 0;
     // Constructors
     public GameController() {
         this(null, null);
@@ -224,6 +248,12 @@ public class GameController implements IModelChangedListener, Parcelable {
 
             if(settings != null && settings.getBoolean("pref_highlightInputError",true)) {
                 checkInputError(row, col);
+                numberError = errorList.size();
+                if(gameActivity != null){
+                    String sError = "Số lỗi:" + " " + numberError + "/3";
+                    gameActivity.setNumberError(sError);
+                }
+                Log.e("error list 2", numberError.toString());
             }
         }
     }
@@ -568,9 +598,11 @@ public class GameController implements IModelChangedListener, Parcelable {
 
     public void checkErrorList() {
         LinkedList<CellConflict> toRemove = new LinkedList<>();
+        Integer error = 0;
         for(CellConflict cc : errorList) {
             if(cc.getCell1().getValue() != cc.getCell2().getValue()) {
                 toRemove.add(cc);
+                error ++;
             }
         }
         errorList.removeAll(toRemove);

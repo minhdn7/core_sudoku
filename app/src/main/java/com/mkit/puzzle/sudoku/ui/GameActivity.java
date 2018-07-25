@@ -76,6 +76,9 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
     WinDialog dialog = null;
     private BottomSheetDialog bottomSheetDialog;
     private String gamelevel = "";
+
+    public TextView tvNumberError;
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -96,9 +99,13 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        addControls();
         initControls(savedInstanceState);
         addBottomMenu();
+    }
+
+    private void addControls() {
+
     }
 
     private void addBottomMenu() {
@@ -215,6 +222,8 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
             }
 
             gameController = new GameController(sharedPref, getApplicationContext());
+            gameController.setGameActivity(this);
+            gameController.setTvNumberError(tvNumberError);
 
             List<GameInfoContainer> loadableGames = GameStateManager.getLoadableGameList();
 
@@ -282,6 +291,7 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
         timerView = (TextView)findViewById(R.id.timerView);
 
         // set game level view
+        tvNumberError = (TextView) findViewById(R.id.tvNumberError);
         TextView tvLevel = (TextView)findViewById(R.id.tvLevel);
         switch ( getIntent().getExtras().getString("GAME_LEVEL")){
             case "LV_EASY":
@@ -554,5 +564,13 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
 
         // return true so that the menu pop up is opened
         return true;
+    }
+
+    public void setNumberError(String error){
+        try {
+            tvNumberError.setText(error);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
