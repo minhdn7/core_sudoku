@@ -250,7 +250,7 @@ public class GameController implements IModelChangedListener, Parcelable {
                 checkInputError(row, col);
                 numberError = errorList.size();
                 if(gameActivity != null){
-                    String sError = "Số lỗi:" + " " + numberError + "/3";
+                    String sError = "Number Error:" + " " + numberError + "/3";
                     gameActivity.setNumberError(sError);
                 }
                 Log.e("error list 2", numberError.toString());

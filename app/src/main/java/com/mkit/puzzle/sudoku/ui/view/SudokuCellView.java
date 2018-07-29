@@ -165,12 +165,14 @@ public class SudokuCellView extends View {
         }
 
 
-        if (mGameCell.isFixed()) {
-//            p.setTypeface(Typeface.DEFAULT_BOLD);
+        if (!mGameCell.isFixed()) {
+            p.setTypeface(Typeface.DEFAULT_BOLD);
+            p.setColor(getResources().getColor(R.color.md_blue_500));
         }
         p.setAntiAlias(true);
         p.setTextSize(Math.min(mHeight * 3 / 4, mHeight * 3 / 4));
         p.setTextAlign(Paint.Align.CENTER);
+
         canvas.drawText(Symbol.getSymbol(symbolsToUse, mGameCell.getValue()-1), mHeight / 2, mHeight / 2 + mHeight / 4, p);
     }
 

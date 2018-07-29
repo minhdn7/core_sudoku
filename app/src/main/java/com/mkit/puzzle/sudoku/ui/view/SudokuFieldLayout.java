@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -227,6 +228,10 @@ public class SudokuFieldLayout extends RelativeLayout implements IHighlightChang
         p.setStrokeWidth(2);
         p.setColor(Color.RED);
 
+//        p.setTypeface(Typeface.SERIF);
+//        p.setColor(Color.RED);
+//        p.setTextAlign(Paint.Align.RIGHT);
+//        p.setAntiAlias(true);
 
         float offsetX = 0;
         float offsetY = 0;

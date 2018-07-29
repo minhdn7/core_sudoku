@@ -141,5 +141,6 @@
     <string name="str_hard">Hard</string>
     <string name="str_expert">Expert</string>
     <string name="str_reset">Reset</string>
+    <string name="error_number_1_3">Error Number 1/3</string>
 
 </resources>
