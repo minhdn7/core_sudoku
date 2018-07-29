@@ -100,7 +100,8 @@ public class SudokuFieldLayout extends RelativeLayout implements IHighlightChang
         if(gameController == null) return;
 
         p.setColor(getResources().getColor(R.color.md_grey_800));
-        p.setStrokeWidth(5);
+        p.setStrokeWidth(2);
+
 
         int horizontalSections = gameController.getSize() / sectionWidth;
         for(int i = 0; i <= horizontalSections; i++) {
@@ -223,8 +224,9 @@ public class SudokuFieldLayout extends RelativeLayout implements IHighlightChang
         // draw error list
         p = new Paint(Paint.ANTI_ALIAS_FLAG);
         p.setStyle(Paint.Style.STROKE);
-        p.setStrokeWidth(4);
+        p.setStrokeWidth(2);
         p.setColor(Color.RED);
+
 
         float offsetX = 0;
         float offsetY = 0;

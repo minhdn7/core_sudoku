@@ -28,7 +28,8 @@ public class SudokuCellView extends View {
     int size;
     boolean selected;
     CellHighlightTypes highlightType = CellHighlightTypes.Default;
-    Symbol symbolsToUse = Symbol.Default;
+//    Symbol symbolsToUse = Symbol.Default;
+    Symbol symbolsToUse = Symbol.Decima;
     RelativeLayout.LayoutParams params;
 
 
@@ -103,19 +104,23 @@ public class SudokuCellView extends View {
                 p.setColor(Color.LTGRAY);
                 break;
             case Selected:
-                p.setColor(Color.GREEN);
+//                p.setColor(Color.GREEN);
+                p.setColor(getResources().getColor(R.color.md_blue_100));
                 break;
             case Connected:
                 p.setColor(Color.WHITE);
                 drawBackground(canvas, 3, 3, mWidth - 3, mHeight - 3, p);
-                p.setColor(Color.YELLOW);
+//                p.setColor(Color.YELLOW);
+                p.setColor(getResources().getColor(R.color.md_blue_50));
                 p.setAlpha(100);
                 break;
             case Value_Highlighted:
-                p.setColor(Color.YELLOW);
+//                p.setColor(Color.YELLOW);
+                p.setColor(getResources().getColor(R.color.md_blue_100));
                 break;
             case Value_Highlighted_Selected:
                 p.setColor(Color.CYAN);
+
             default:
                 p.setColor(Color.WHITE);
         }
@@ -142,7 +147,7 @@ public class SudokuCellView extends View {
         if(mGameCell.getValue() == 0) {
             for (int i = 0; i < mGameCell.getNotes().length; i++) {
                 if (mGameCell.getNotes()[i]) {
-                    p.setTypeface(Typeface.SANS_SERIF);
+                    p.setTypeface(Typeface.SERIF);
                     p.setTextSize(mWidth / 4);
                     p.setTextAlign(Paint.Align.RIGHT);
                     canvas.drawText(Symbol.getSymbol(symbolsToUse, i),(mWidth*1/(size+root))*k,(mWidth*1/(size+root+1))*j,p);
@@ -161,7 +166,7 @@ public class SudokuCellView extends View {
 
 
         if (mGameCell.isFixed()) {
-            p.setTypeface(Typeface.DEFAULT_BOLD);
+//            p.setTypeface(Typeface.DEFAULT_BOLD);
         }
         p.setAntiAlias(true);
         p.setTextSize(Math.min(mHeight * 3 / 4, mHeight * 3 / 4));

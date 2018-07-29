@@ -295,16 +295,16 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
         TextView tvLevel = (TextView)findViewById(R.id.tvLevel);
         switch ( getIntent().getExtras().getString("GAME_LEVEL")){
             case "LV_EASY":
-                tvLevel.setText("Dễ");
+                tvLevel.setText("Easy");
                 break;
             case "LV_NORMAL":
-                tvLevel.setText("Vừa");
+                tvLevel.setText("Normal");
                 break;
             case "LV_HARD":
-                tvLevel.setText("Khó");
+                tvLevel.setText("Hard");
                 break;
             case "LV_EXPERT":
-                tvLevel.setText("Chuyên gia");
+                tvLevel.setText("Expert");
                 break;
         }
         //set GameName

@@ -64,7 +64,7 @@
         <com.mkit.puzzle.sudoku.ui.view.SudokuSpecialButtonLayout
             android:id="@+id/sudokuSpecialLayout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="40dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
         </LinearLayout>
         <com.mkit.puzzle.sudoku.ui.view.SudokuKeyboardLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/sudokuKeyboardLayout"
             android:orientation="vertical"
             android:layout_weight="1"

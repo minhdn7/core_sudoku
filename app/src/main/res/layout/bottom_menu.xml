@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Khó" />
+            android:text="@string/str_hard" />
     </LinearLayout>
 
     <LinearLayout
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Chuyên gia" />
+            android:text="@string/str_expert" />
     </LinearLayout>
 
     <LinearLayout
@@ -116,6 +116,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Chơi lại" />
+            android:text="@string/str_reset" />
     </LinearLayout>
 </LinearLayout>
