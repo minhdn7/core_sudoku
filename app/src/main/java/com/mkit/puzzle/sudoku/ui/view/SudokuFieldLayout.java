@@ -21,9 +21,6 @@ import com.mkit.puzzle.sudoku.game.listener.IHighlightChangedListener;
 
 import java.util.LinkedList;
 
-/**
- * Created by Timm Lippert on 11.11.2015.
- */
 public class SudokuFieldLayout extends RelativeLayout implements IHighlightChangedListener {
 
     private GameController gameController;
@@ -122,6 +119,7 @@ public class SudokuFieldLayout extends RelativeLayout implements IHighlightChang
             }
             int h = (i * getHeight() / verticalSections) + offset;
             canvas.drawLine(0, h, getWidth(), h, p);
+
         }
     }
 

@@ -8,9 +8,6 @@ import java.util.LinkedList;
 
 import com.mkit.puzzle.sudoku.ui.view.R;
 
-/**
- * Created by Chris on 18.11.2015.
- */
 public enum GameDifficulty implements Parcelable {
 
     Unspecified(R.string.gametype_unspecified),

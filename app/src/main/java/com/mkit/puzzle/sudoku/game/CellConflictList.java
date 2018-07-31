@@ -2,9 +2,6 @@ package com.mkit.puzzle.sudoku.game;
 
 import java.util.ArrayList;
 
-/**
- * Created by Chris on 10.11.2015.
- */
 public class CellConflictList extends ArrayList<CellConflict> {
 
     /**

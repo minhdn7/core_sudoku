@@ -29,9 +29,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Created by Chris on 06.11.2015.
- */
 public class GameController implements IModelChangedListener, Parcelable {
 
     // General
@@ -250,7 +247,7 @@ public class GameController implements IModelChangedListener, Parcelable {
                 checkInputError(row, col);
                 numberError = errorList.size();
                 if(gameActivity != null){
-                    String sError = "Number Error:" + " " + numberError + "/3";
+                    String sError = "Misstakes:" + " " + numberError + "/3";
                     gameActivity.setNumberError(sError);
                 }
                 Log.e("error list 2", numberError.toString());

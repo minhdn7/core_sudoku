@@ -40,4 +40,12 @@ dependencies {
     implementation 'com.github.hotchemi:android-rate:1.0.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.google.android.gms:play-services-ads:11.2.0'
+
+    implementation 'com.bartoszlipinski.constraint:staggeredanimationgroup:1.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
+    implementation 'com.android.support:transition:26.1.0'
+
+    compile 'com.daimajia.easing:library:2.0@aar'
+    compile 'com.daimajia.androidanimations:library:2.3@aar'
+    compile 'com.appolica:flubber:1.0.1'
 }

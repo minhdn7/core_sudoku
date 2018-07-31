@@ -35,6 +35,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appolica.flubber.Flubber;
+import com.bartoszlipinski.constraint.StaggeredAnimationGroup;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -78,7 +82,7 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
     private String gamelevel = "";
 
     public TextView tvNumberError;
-
+    private StaggeredAnimationGroup group;
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -264,9 +268,18 @@ public class GameActivity extends BaseActivity implements IGameSolvedListener ,I
         gameController.registerGameSolvedListener(this);
         gameController.registerTimerListener(this);
         statistics.setGameController(gameController);
-
         layout.setSettingsAndGame(sharedPref, gameController);
 
+//        YoYo.with(Techniques.RollIn)
+//                .duration(2000)
+//                .repeat(0)
+//                .playOn(findViewById(R.id.sudokuLayout));
+        Flubber.with()
+                .animation(Flubber.AnimationPreset.MORPH) // Slide down animation
+                .repeatCount(0)                              // No Repeat
+                .duration(3000)                              // Last for 3000 milliseconds(1 second)
+                .createFor(layout)                             // Apply it to the view
+                .start();
         //set KeyBoard
         keyboard = (SudokuKeyboardLayout) findViewById(R.id.sudokuKeyboardLayout);
         keyboard.removeAllViews();
